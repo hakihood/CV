@@ -1,0 +1,368 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&display=swap');
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@plugin '@tailwindcss/typography';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --sea-ink: 189 47% 17%;
+  --sea-ink-soft: 188 22% 33%;
+  --lagoon: 177 42% 52%;
+  --lagoon-deep: 185 50% 39%;
+  --palm: 148 39% 30%;
+  --sand: 127 23% 92%;
+  --foam: 137 41% 97%;
+  --surface: 0 0% 100% / 0.74;
+  --surface-strong: 0 0% 100% / 0.9;
+  --line: 189 47% 17% / 0.14;
+  --inset-glint: 0 0% 100% / 0.82;
+  --kicker: 148 39% 30% / 0.9;
+  --bg-base: 145 33% 93%;
+  --header-bg: 94 100% 99% / 0.84;
+  --chip-bg: 0 0% 100% / 0.8;
+  --chip-line: 148 39% 30% / 0.18;
+  --link-bg-hover: 0 0% 100% / 0.9;
+  --hero-a: 177 42% 52% / 0.36;
+  --hero-b: 148 39% 30% / 0.2;
+
+  --background: 0 0% 100%;
+  --foreground: 0 0% 3.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 3.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 3.9%;
+  --primary: 0 0% 9%;
+  --primary-foreground: 0 0% 98%;
+  --secondary: 0 0% 96.1%;
+  --secondary-foreground: 0 0% 9%;
+  --muted: 0 0% 96.1%;
+  --muted-foreground: 0 0% 45.1%;
+  --accent: 0 0% 96.1%;
+  --accent-foreground: 0 0% 9%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 0 0% 89.8%;
+  --input: 0 0% 89.8%;
+  --ring: 0 0% 3.9%;
+  --chart-1: 12 76% 61%;
+  --chart-2: 173 58% 39%;
+  --chart-3: 197 37% 24%;
+  --chart-4: 43 74% 66%;
+  --chart-5: 27 87% 67%;
+  --radius: 0.625rem;
+  --sidebar: 0 0% 98%;
+  --sidebar-foreground: 0 0% 3.9%;
+  --sidebar-primary: 0 0% 9%;
+  --sidebar-primary-foreground: 0 0% 98%;
+  --sidebar-accent: 0 0% 96.1%;
+  --sidebar-accent-foreground: 0 0% 9%;
+  --sidebar-border: 0 0% 89.8%;
+  --sidebar-ring: 0 0% 83.1%;
+
+  /* --- CV: page geometry (single source of truth for screen AND print) --- */
+  --page-w: 210mm;
+  --page-h: 297mm;
+  --page-pad-y: 9mm;
+  --page-pad-x: 8mm;
+  --rail-w: 66mm;
+  --rail-gap: 6mm;
+  /* Horizontal insets of the main column. The masthead rule is drawn with a
+     pseudo-element pinned to these, so it lines up with the section rules
+     instead of running the full width of its padding box. */
+  --main-pad-l: var(--rail-gap);
+  --main-pad-r: var(--page-pad-x);
+
+  /* --- CV: palette.
+     NB: the prefix matters — bare `--accent` is already taken by the shadcn
+     token above and is consumed by @theme inline. --- */
+  --paper: hsl(42 38% 96%);
+  --ink: hsl(218 31% 13%);
+  --ink-soft: hsl(219 13% 36%);
+  --ink-faint: hsl(219 13% 52%);
+  --rule: hsl(218 31% 13% / .14);
+  --cv-accent: hsl(28 91% 58%);
+  --cv-accent-ink: hsl(24 84% 40%); /* accent darkened enough to read on paper */
+  --side: hsl(222 37% 16%);
+  --side-ink: hsl(40 57% 94%);
+  --side-soft: hsl(40 57% 94% / .72);
+  --side-rule: hsl(40 57% 94% / .2);
+  --desk: hsl(211 24% 90%);
+}
+
+@theme inline {
+  --color-background: hsl(var(--background)); --color-foreground: hsl(var(--foreground)); --color-card: hsl(var(--card)); --color-card-foreground: hsl(var(--card-foreground)); --color-popover: hsl(var(--popover)); --color-popover-foreground: hsl(var(--popover-foreground)); --color-primary: hsl(var(--primary)); --color-primary-foreground: hsl(var(--primary-foreground)); --color-secondary: hsl(var(--secondary)); --color-secondary-foreground: hsl(var(--secondary-foreground)); --color-muted: hsl(var(--muted)); --color-muted-foreground: hsl(var(--muted-foreground)); --color-accent: hsl(var(--accent)); --color-accent-foreground: hsl(var(--accent-foreground)); --color-destructive: hsl(var(--destructive)); --color-destructive-foreground: hsl(var(--destructive-foreground)); --color-border: hsl(var(--border)); --color-input: hsl(var(--input)); --color-ring: hsl(var(--ring)); --radius-sm: calc(var(--radius) - 4px); --radius-md: calc(var(--radius) - 2px); --radius-lg: var(--radius); --radius-xl: calc(var(--radius) + 4px);
+}
+
+/* ==========================================================================
+   CV — the sheet is laid out in mm and typed in pt, so the screen render IS
+   the print render. Keep px out of the page itself; it belongs only to the
+   surrounding chrome (toolbar, desk) and the phone override.
+   ========================================================================== */
+
+* { box-sizing: border-box; }
+html { background: var(--desk); }
+body {
+  margin: 0;
+  overflow-x: hidden;
+  color: var(--ink);
+  background: var(--desk);
+  font-family: 'DM Sans', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+button, a { font: inherit; }
+a { color: inherit; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
+/* --- Type scale (pt, so it survives the trip to paper unchanged) --------- */
+:root {
+  --fs-name: 26pt;
+  --fs-role: 8.6pt;
+  --fs-eyebrow: 7.2pt;
+  --fs-h2: 16.5pt;
+  --fs-h3: 10.5pt;
+  --fs-project: 12.5pt;
+  --fs-body: 8.1pt;
+  --fs-meta: 7.9pt;
+  --fs-rail: 8.5pt;
+  --fs-small: 7.5pt;
+}
+
+/* --- Screen chrome ------------------------------------------------------- */
+.cv-shell {
+  min-height: 100vh;
+  padding: 24px 16px 56px;
+  background: radial-gradient(circle at 8% 6%, hsl(28 91% 58% / .16), transparent 32rem), var(--desk);
+}
+.screen-toolbar {
+  width: var(--page-w);
+  margin: 0 auto 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.toolbar-note { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-soft); }
+.toolbar-actions { display: flex; gap: 8px; }
+.toolbar-button {
+  border: 1px solid var(--ink);
+  background: transparent;
+  color: var(--ink);
+  padding: 8px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background .18s ease, color .18s ease, transform .18s ease;
+}
+.toolbar-button:hover { transform: translateY(-2px); background: var(--paper); }
+.toolbar-button.is-primary { background: var(--ink); color: var(--paper); }
+.toolbar-button.is-primary:hover { background: var(--cv-accent); color: var(--ink); border-color: var(--cv-accent); }
+.toolbar-button:focus-visible, a:focus-visible { outline: 2px solid var(--cv-accent); outline-offset: 3px; }
+
+/* --- The page ------------------------------------------------------------ */
+.paper-frame { width: var(--page-w); margin: 0 auto; }
+.page {
+  width: var(--page-w);
+  height: var(--page-h);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: var(--rail-w) 1fr;
+  /* The rail spans both rows so its dark field reaches the bottom edge; `1fr`
+     on the second row pins the grid to the full sheet even when the columns
+     are shorter than the paper. */
+  grid-template-rows: 100%;
+  background: var(--paper);
+  box-shadow: 0 18px 48px hsl(218 31% 13% / .2);
+}
+
+/* Wide screens: enlarge the sheet without changing a single measurement. */
+@media (min-width: 1060px) {
+  .screen-toolbar { width: calc(var(--page-w) * 1.15); }
+  .paper-frame { width: calc(var(--page-w) * 1.15); height: calc(var(--page-h) * 1.15); }
+  .page { transform: scale(1.15); transform-origin: top left; }
+}
+
+/* --- Left rail ----------------------------------------------------------- */
+.rail {
+  padding: var(--page-pad-y) var(--rail-gap) var(--page-pad-y) var(--page-pad-x);
+  background: var(--side);
+  color: var(--side-ink);
+}
+.portrait {
+  display: block;
+  width: 31mm;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: center 22%;
+  background: hsl(222 37% 26%);
+  border-bottom: 1.2mm solid var(--cv-accent);
+}
+.rail-section { margin-top: 3.2mm; padding-top: 3.2mm; border-top: 1px solid var(--side-rule); }
+.rail-section:first-of-type { border-top: 0; }
+.rail-title {
+  margin: 0 0 2mm;
+  font-family: 'DM Mono', monospace;
+  font-size: var(--fs-eyebrow);
+  font-weight: 500;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--cv-accent);
+}
+
+/* Contact is the one block a recruiter has to find fast — give it room. */
+.rail-contact { font-style: normal; display: grid; gap: 1.5mm; font-size: var(--fs-rail); line-height: 1.3; }
+.contact-line { display: grid; grid-template-columns: 4.4mm 1fr; align-items: start; gap: 1.2mm; text-decoration: none; }
+.contact-icon { width: 4mm; height: 4mm; margin-top: .2mm; color: var(--cv-accent); flex: 0 0 auto; }
+.contact-line span { overflow-wrap: anywhere; }
+.contact-line:hover span { color: var(--cv-accent); }
+.rail-muted { margin: 1.8mm 0 0; font-size: var(--fs-small); color: var(--side-soft); }
+
+.rail-skills { margin: 0; display: grid; gap: 1.8mm; }
+.rail-skills dt { font-size: var(--fs-small); font-weight: 600; }
+.rail-skills dd { margin: .4mm 0 0; font-size: var(--fs-rail); line-height: 1.35; color: var(--side-soft); }
+
+.rail-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 2mm; }
+.rail-list li { display: grid; gap: .3mm; font-size: var(--fs-rail); line-height: 1.3; }
+.rail-list em { font-style: normal; font-family: 'DM Mono', monospace; font-size: var(--fs-small); color: var(--side-soft); }
+.rail-list strong { font-weight: 600; }
+.rail-list span { color: var(--side-soft); }
+
+.rail-languages { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.4mm; font-size: var(--fs-rail); }
+.rail-languages li { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0 3mm; }
+.rail-languages b { margin-left: auto; font-family: 'DM Mono', monospace; font-weight: 400; font-size: var(--fs-small); color: var(--side-soft); }
+
+.rail-text { margin: 0; font-size: var(--fs-rail); line-height: 1.4; color: var(--side-soft); }
+
+/* --- Identity block (sits at the top of the rail, above the portrait) ----- */
+.rail-name {
+  margin: 0 0 5mm;
+  font-family: 'Playfair Display', serif;
+  font-size: var(--fs-name);
+  font-weight: 700;
+  line-height: .96;
+  letter-spacing: -.03em;
+  color: var(--side-ink);
+}
+.rail-name i { font-style: normal; color: inherit; font-weight: inherit; }
+.rail-name span {
+  font-family: 'DM Mono', monospace;
+  font-size: var(--fs-small);
+  font-weight: 400;
+  letter-spacing: .02em;
+  color: var(--side-soft);
+}
+
+/* --- Main column --------------------------------------------------------- */
+.sheet-main { padding: var(--page-pad-y) var(--main-pad-r) var(--page-pad-y) var(--main-pad-l); }
+.sheet-main > .block:first-child { margin-top: 0; }
+.intro { margin: 2.6mm 0 0; font-size: var(--fs-body); line-height: 1.45; }
+
+.block { margin-top: 2.6mm; }
+.block-title {
+  margin: 0 0 1.6mm;
+  padding-bottom: 1.2mm;
+  border-bottom: 1.2pt solid var(--ink);
+  font-family: 'Playfair Display', serif;
+  font-size: var(--fs-h2);
+  font-weight: 700;
+  letter-spacing: -.025em;
+}
+
+.entry { display: grid; grid-template-columns: 26mm 1fr; gap: 4mm; padding-top: 1.8mm; margin-top: 1.8mm; border-top: 1px solid var(--rule); }
+.entry:first-of-type { padding-top: 0; margin-top: 0; border-top: 0; }
+.entry-meta { display: grid; align-content: start; gap: .8mm; font-family: 'DM Mono', monospace; font-size: var(--fs-meta); line-height: 1.35; color: var(--ink-soft); }
+.entry-meta strong { font-weight: 500; color: var(--ink); }
+.entry-body h3 { margin: 0; font-size: var(--fs-h3); font-weight: 700; line-height: 1.25; }
+.entry-body h3 span { font-weight: 400; color: var(--ink-soft); }
+.entry-links { margin: 1.6mm 0 0; font-family: 'DM Mono', monospace; font-size: var(--fs-small); }
+.entry-links a { text-decoration: none; border-bottom: 1px solid var(--cv-accent); }
+.entry-links a:hover { color: var(--cv-accent-ink); }
+.link-arrow { color: var(--cv-accent-ink); }
+
+.bullets { list-style: none; margin: 1.4mm 0 0; padding: 0; display: grid; gap: .8mm; font-size: var(--fs-body); line-height: 1.35; color: var(--ink-soft); }
+.bullets li { display: grid; grid-template-columns: 3.2mm 1fr; }
+.bullets li::before { content: '–'; color: var(--cv-accent-ink); font-weight: 700; }
+
+.project-grid { display: grid; gap: 1.6mm; }
+.project { border: 1px solid var(--rule); padding: 1.8mm 2.6mm 2mm; }
+.project.is-featured { background: hsl(28 91% 58% / .1); border-color: hsl(28 91% 58% / .38); }
+.project-head { display: flex; align-items: baseline; justify-content: space-between; gap: 4mm; }
+.project-label {
+  margin: 0;
+  font-family: 'DM Mono', monospace;
+  font-size: var(--fs-eyebrow);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--cv-accent-ink);
+}
+.project h3 { margin: .8mm 0 0; font-family: 'Playfair Display', serif; font-size: var(--fs-project); font-weight: 700; letter-spacing: -.02em; line-height: 1.15; }
+/* Credits the agency the client project was delivered under, without competing
+   with the project name. */
+.project h3 span { font-family: 'DM Mono', monospace; font-size: var(--fs-small); font-weight: 400; letter-spacing: 0; color: var(--ink-soft); }
+.project-year { font-family: 'DM Mono', monospace; font-size: var(--fs-small); color: var(--ink-soft); white-space: nowrap; }
+.project-links { list-style: none; margin: 1.4mm 0 0; padding: 0; display: grid; gap: .8mm; font-size: var(--fs-body); }
+.project-links li { display: flex; align-items: baseline; flex-wrap: wrap; gap: 0 1mm; }
+.project-links a { text-decoration: none; font-weight: 600; border-bottom: 1px solid var(--cv-accent); }
+.project-links a:hover { color: var(--cv-accent-ink); }
+.project-links i { font-style: normal; color: var(--ink-soft); }
+.project-links i::before { content: '· '; color: var(--ink-faint); }
+/* Status flag for a site that isn't finished yet — kept visually separate
+   from the category note so the "label · category" rhythm still reads. */
+.link-status {
+  font-style: normal;
+  font-family: 'DM Mono', monospace;
+  font-size: var(--fs-eyebrow);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--cv-accent-ink);
+  background: hsl(28 91% 58% / .16);
+  border: 1px solid hsl(28 91% 58% / .4);
+  border-radius: 999px;
+  padding: .1mm 1.6mm .3mm;
+  line-height: 1.3;
+  transform: translateY(-.2mm);
+}
+.stack { margin: 1.6mm 0 0; font-family: 'DM Mono', monospace; font-size: var(--fs-small); color: var(--ink); }
+
+/* --- Phone: the sheet metaphor stops making sense, so drop it ------------- */
+@media (max-width: 760px) {
+  :root {
+    --fs-name: 30px; --fs-role: 15px; --fs-eyebrow: 11px; --fs-h2: 22px;
+    --fs-h3: 17px; --fs-project: 20px; --fs-body: 14px; --fs-meta: 13px;
+    --fs-rail: 14px; --fs-small: 13px;
+    --main-pad-l: 20px; --main-pad-r: 20px;
+  }
+  .cv-shell { padding: 14px 0 40px; }
+  .screen-toolbar { width: auto; margin: 0 16px 12px; }
+  .paper-frame { width: 100%; height: auto; }
+  .page { width: 100%; height: auto; display: flex; flex-direction: column; transform: none; box-shadow: none; overflow: visible; }
+  /* The rail opens with the portrait and the name, so it leads. */
+  .rail { padding: 24px 20px 28px; }
+  .sheet-main { padding: 24px var(--main-pad-r) 24px var(--main-pad-l); }
+  .portrait { width: 150px; aspect-ratio: 1 / 1; border-bottom-width: 4px; }
+  .rail-section { margin-top: 18px; padding-top: 18px; }
+  .contact-line { grid-template-columns: 20px 1fr; gap: 8px; }
+  .contact-icon { width: 17px; height: 17px; margin-top: 1px; }
+  .block { margin-top: 26px; }
+  .entry { grid-template-columns: 1fr; gap: 4px; padding-top: 14px; margin-top: 14px; }
+  .entry-meta { grid-auto-flow: column; justify-content: start; gap: 8px; }
+  .entry-meta span::before { content: '· '; }
+  .bullets li { grid-template-columns: 14px 1fr; }
+  .project-grid { gap: 14px; }
+  .project { padding: 14px 16px 16px; }
+}
+
+/* --- Print: the page is already A4, so this only strips the chrome -------- */
+@media print {
+  @page { size: A4 portrait; margin: 0; }
+  html, body { background: #fff; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .cv-shell { min-height: 0; padding: 0; background: none; }
+  .screen-toolbar { display: none; }
+  .paper-frame { width: var(--page-w); height: var(--page-h); margin: 0; }
+  .page { transform: none; box-shadow: none; break-inside: avoid; }
+  .toolbar-button:hover { transform: none; }
+}
