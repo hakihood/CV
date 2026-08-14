@@ -7,7 +7,7 @@ type Language = 'cs' | 'en'
 
 const EMAIL = 'lukasbui2005@gmail.com'
 const PHONE = '+420 774 962 568'
-const LINKEDIN = 'https://www.linkedin.com/in/dai-duong-bui-281025262'
+const LINKEDIN = 'https://www.linkedin.com/in/dai-duong-bui/'
 
 type IconType = 'email' | 'phone' | 'linkedin' | 'pin'
 
