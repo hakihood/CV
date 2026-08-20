@@ -359,9 +359,22 @@ function App() {
           >
             {t.languageButton}
           </button>
-          <button type="button" className="toolbar-button is-primary" onClick={() => window.print()} data-testid="print-cv">
+          {/* Downloads a pre-generated text PDF (real text layer + clickable
+              links, single A4 page) instead of window.print(). The browser
+              print dialog rasterizes to multiple pages when the user leaves
+              margins on "Default" / picks "Microsoft Print to PDF", which breaks
+              ATS parsing — this side-steps that entirely.
+              The files live in public/ and are regenerated with
+              scripts/export-pdf.py. Keep them in sync whenever the CV content
+              changes. */}
+          <a
+            className="toolbar-button is-primary"
+            href={`/Dai_Duong_Bui_CV_${language}.pdf`}
+            download="Dai Duong Bui - CV.pdf"
+            data-testid="print-cv"
+          >
             {t.print}
-          </button>
+          </a>
         </div>
       </div>
 

@@ -146,6 +146,8 @@ a { color: inherit; }
 .toolbar-note { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-soft); }
 .toolbar-actions { display: flex; gap: 8px; }
 .toolbar-button {
+  display: inline-flex;
+  align-items: center;
   border: 1px solid var(--ink);
   background: transparent;
   color: var(--ink);
@@ -154,6 +156,7 @@ a { color: inherit; }
   font-weight: 600;
   border-radius: 4px;
   cursor: pointer;
+  text-decoration: none;
   transition: background .18s ease, color .18s ease, transform .18s ease;
 }
 .toolbar-button:hover { transform: translateY(-2px); background: var(--paper); }
