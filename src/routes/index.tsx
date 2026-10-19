@@ -79,10 +79,17 @@ const cs: Copy = {
   skillGroups: [
     { label: 'Web', items: 'WordPress · HTML/CSS · JavaScript · React · SQL' },
     { label: 'Automatizace', items: 'Python · Playwright · n8n' },
-    { label: 'AI', items: 'klasifikace přes LLM · prompt engineering · evaluace modelů' },
+    { label: 'AI', items: 'Claude Code · AI agenti v n8n · integrace LLM · prompt engineering · evaluace modelů' },
     { label: 'Nástroje', items: 'Git · Figma' },
   ],
   entries: [
+    {
+      period: 'od 09/2026',
+      note: 'komunitní role',
+      role: 'n8n Ambassador',
+      org: 'n8n · Praha',
+      bullets: ['Rozšiřuji pražskou komunitu n8n: meetupy, hackathony a přednášky, první meetup připravuji na prosinec 2026'],
+    },
     {
       period: 'od 08/2025',
       note: 'hybridně',
@@ -101,18 +108,14 @@ const cs: Copy = {
       ],
     },
     {
-      period: '2024',
+      period: '2023–2024',
       note: 'dvoutýdenní praxe',
-      role: 'Stážista webového designu',
-      org: 'Robology',
-      bullets: ['Weby v Elementoru, převod návrhů z Figmy do WordPressu'],
-    },
-    {
-      period: '2023',
-      note: 'dvoutýdenní praxe',
-      role: 'Stážista webové podpory',
-      org: 'ANT Studio',
-      bullets: ['Obsahová editace, modernizace starších webů, blog, responzivita'],
+      role: 'Stážista webového vývoje',
+      org: 'Robology, ANT Studio',
+      bullets: [
+        'Robology (2024): Elementor, převod návrhů z Figmy do WordPressu',
+        'ANT Studio (2023): obsahová editace v Elementoru, modernizace starších webů, blog, responzivita',
+      ],
     },
   ],
   projects: [
@@ -122,7 +125,7 @@ const cs: Copy = {
       org: 'Mravenci.cz',
       year: '2026',
       bullets: [
-        'Nahradil ruční obcházení webů 55 středních škol v Plzeňském kraji, termíny se dohledávají samy',
+        'Nahradil ruční obcházení webů 55 středních škol v Plzeňském kraji, termíny se hledají samy',
         'Pipeline v Pythonu: stažení webů, klasifikace úryvků přes LLM, porovnání s minulým během a zápis do tabulky, ze které si web klienta bere obsah',
         'Součástí je i důkladnější audit s knihovnou Playwright, který projde i weby vykreslované JavaScriptem a termíny schované v kalendářích',
         'Vlastní evaluační sada na porovnávání AI modelů',
@@ -161,7 +164,7 @@ const cs: Copy = {
   certificateList: ['n8n Academy: AI, Testing & Best Practices · 2026', 'n8n Academy: Integrations & APIs · 2026', 'n8n Academy: Essentials · 2026'],
   languageList: [
     { name: 'Čeština', level: 'rodilý' },
-    { name: 'Tiếng Việt', level: 'C2 / B1' },
+    { name: 'Vietnamština', level: 'mluvená C2 / psaná B1' },
     { name: 'English', level: 'B2' },
   ],
   communityText:
@@ -189,10 +192,17 @@ const en: Copy = {
   skillGroups: [
     { label: 'Web', items: 'WordPress · HTML/CSS · JavaScript · React · SQL' },
     { label: 'Automation', items: 'Python · Playwright · n8n' },
-    { label: 'AI', items: 'LLM classification · prompt engineering · model evaluation' },
+    { label: 'AI', items: 'Claude Code · AI agents in n8n · LLM integration · prompt engineering · model evaluation' },
     { label: 'Tools', items: 'Git · Figma' },
   ],
   entries: [
+    {
+      period: 'since 09/2026',
+      note: 'community role',
+      role: 'n8n Ambassador',
+      org: 'n8n · Prague',
+      bullets: ['Growing the Prague n8n community through meetups, hackathons and talks; first meetup planned for December 2026'],
+    },
     {
       period: 'since 08/2025',
       note: 'hybrid',
@@ -211,18 +221,14 @@ const en: Copy = {
       ],
     },
     {
-      period: '2024',
-      note: '2-week placement',
-      role: 'Web design intern',
-      org: 'Robology',
-      bullets: ['Elementor builds, translating Figma designs into WordPress pages'],
-    },
-    {
-      period: '2023',
-      note: '2-week placement',
-      role: 'Web support intern',
-      org: 'ANT Studio',
-      bullets: ['Content editing, modernising legacy sites, blog sections, responsive fixes'],
+      period: '2023–2024',
+      note: '2-week placements',
+      role: 'Web development intern',
+      org: 'Robology, ANT Studio',
+      bullets: [
+        'Robology (2024): Elementor builds, Figma designs into WordPress pages',
+        'ANT Studio (2023): content editing in Elementor, modernising legacy sites, blog sections, responsive fixes',
+      ],
     },
   ],
   projects: [
@@ -232,7 +238,7 @@ const en: Copy = {
       org: 'Mravenci.cz',
       year: '2026',
       bullets: [
-        'Replaced manual checking of 55 secondary-school websites, the dates now find themselves',
+        'Replaced manual checking of 55 school websites, the dates now find themselves',
         'Python pipeline: fetch the sites, classify the snippets with an LLM, diff against the previous run and write to the sheet the client’s website reads its content from',
         'Includes a deeper audit built on Playwright that also covers JavaScript-rendered sites and dates buried in calendars',
         'Own evaluation set for comparing AI models',
@@ -271,11 +277,11 @@ const en: Copy = {
   certificateList: ['n8n Academy: AI, Testing & Best Practices · 2026', 'n8n Academy: Integrations & APIs · 2026', 'n8n Academy: Essentials · 2026'],
   languageList: [
     { name: 'Czech', level: 'native' },
-    { name: 'Tiếng Việt', level: 'C2 / B1' },
+    { name: 'Vietnamese', level: 'spoken C2 / written B1' },
     { name: 'English', level: 'B2' },
   ],
   communityText:
-    'I regularly attend AI meetups, hackathons and tech conferences at home and abroad, and I’m an active member of The Vibe Coders. In my free time I play trumpet in several orchestras and chess.',
+    'I regularly attend AI meetups, hackathons and tech conferences at home and abroad, and I’m an active member of The Vibe Coders. In my free time I play trumpet in several orchestras and play chess for fun.',
 }
 
 const copy: Record<Language, Copy> = { cs, en }

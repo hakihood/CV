@@ -220,7 +220,7 @@ a { color: inherit; }
 .contact-line { display: grid; grid-template-columns: 4.4mm 1fr; align-items: start; gap: 1.2mm; text-decoration: none; }
 .contact-icon { width: 4mm; height: 4mm; margin-top: .2mm; color: var(--cv-accent); flex: 0 0 auto; }
 .contact-line span { overflow-wrap: anywhere; }
-.contact-line:hover span { color: var(--cv-accent); }
+a.contact-line:hover span { color: var(--cv-accent); }
 .rail-muted { margin: 1.8mm 0 0; font-size: var(--fs-small); color: var(--side-soft); }
 
 .rail-skills { margin: 0; display: grid; gap: 1.8mm; }
@@ -259,11 +259,12 @@ a { color: inherit; }
 }
 
 /* --- Main column --------------------------------------------------------- */
-.sheet-main { padding: var(--page-pad-y) var(--main-pad-r) var(--page-pad-y) var(--main-pad-l); }
+/* Bottom padding is tighter than the top so the main column fits one A4 page. */
+.sheet-main { padding: var(--page-pad-y) var(--main-pad-r) 6mm var(--main-pad-l); }
 .sheet-main > .block:first-child { margin-top: 0; }
 .intro { margin: 2.6mm 0 0; font-size: var(--fs-body); line-height: 1.45; }
 
-.block { margin-top: 2.6mm; }
+.block { margin-top: 2.2mm; }
 .block-title {
   margin: 0 0 1.6mm;
   padding-bottom: 1.2mm;
