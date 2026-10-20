@@ -82,19 +82,22 @@ def ukol2():
     x = np.linspace(0, 12, 100)
     ax.plot(x, 6 - 0.5 * x, color=BLUE, lw=2.5, label="BL: 100·X + 200·Y = 1200")
     ax.plot([0, 7.5], [0, 7.5], ":", color=GRAY, lw=1.5)
-    ax.text(7.0, 7.0, "Y = X (poměr 1:1)", color=GRAY, fontsize=10)
-    for c, lab, col in [(2, "U₁", GRAY), (4, "U₂", ORANGE), (6, "U₃", GRAY)]:
-        l_curve(ax, c, lab, col, lw=2.5 if c == 4 else 1.8)
+    ax.text(7.7, 7.4, "Y = X (poměr 1:1)", color=GRAY, fontsize=10)
+    for c, lab, col in [(2, "U₁", GREEN), (4, "U₂", ORANGE), (6, "U₃", "#7b1fa2")]:
+        l_curve(ax, c, lab, col, lw=3)
+    ax.plot([], [], color=ORANGE, lw=3, label="U₁, U₂, U₃ – indiferenční křivky (tvar L)")
+    ax.annotate("roh IC leží\nna přímce Y = X", (6, 6), (7.3, 4.6), fontsize=10, color="#7b1fa2",
+                arrowprops=dict(arrowstyle="->", color="#7b1fa2"))
     guides(ax, 4, 4)
     point(ax, 4, 4, "E (optimum)", dx=0.3, dy=-0.55, color=RED)
     ax.set_xticks([0, 2, 4, 6, 8, 10, 12])
     ax.set_yticks([0, 2, 4, 6])
     ax.set_xlim(0, 14.5)
-    ax.set_ylim(0, 7.8)
+    ax.set_ylim(0, 8.6)
     ax.set_xlabel("X (množství statku X)")
     ax.set_ylabel("Y (množství statku Y)")
     ax.set_title("Úkol 2 – dokonalé komplementy, optimum E = [4; 4]", fontweight="bold")
-    ax.legend(loc="upper right")
+    ax.legend(loc="upper right", fontsize=10)
     axes_arrows(ax)
     fig.tight_layout()
     return fig
