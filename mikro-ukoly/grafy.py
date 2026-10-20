@@ -44,6 +44,9 @@ def ukol1():
                 arrowprops=dict(arrowstyle="->", color=RED))
     a1.set_ylabel("TU (celkový užitek)")
     a1.set_ylim(0, 19.5)
+    a1.set_yticks(range(0, 20, 4))
+    a1.set_xlabel("Q (počet sklenic piva)")
+    a1.tick_params(labelbottom=True)
     a1.set_title("Úkol 1 – celkový a mezní užitek", fontweight="bold")
     a1.legend(loc="upper left")
 
@@ -56,6 +59,7 @@ def ukol1():
     a2.set_ylabel("MU (mezní užitek)")
     a2.set_xlabel("Q (počet sklenic piva)")
     a2.set_ylim(-3.8, 9)
+    a2.set_yticks(range(-2, 10, 2))
     a2.legend(loc="upper right")
 
     for ax in (a1, a2):
