@@ -79,7 +79,7 @@ const cs: Copy = {
   skillGroups: [
     { label: 'Web', items: 'WordPress · HTML/CSS · JavaScript · React · SQL' },
     { label: 'Automatizace', items: 'Python · Playwright · n8n' },
-    { label: 'AI', items: 'Claude Code · AI agenti v n8n · integrace LLM · prompt engineering · evaluace modelů' },
+    { label: 'AI', items: 'agentic engineering · integrace LLM · prompt engineering · evaluace modelů' },
     { label: 'Nástroje', items: 'Git · Figma' },
   ],
   entries: [
@@ -108,7 +108,7 @@ const cs: Copy = {
       ],
     },
     {
-      period: '2023–2024',
+      period: '2023 a 2024',
       note: 'dvoutýdenní praxe',
       role: 'Stážista webového vývoje',
       org: 'Robology, ANT Studio',
@@ -164,7 +164,7 @@ const cs: Copy = {
   certificateList: ['n8n Academy: AI, Testing & Best Practices · 2026', 'n8n Academy: Integrations & APIs · 2026', 'n8n Academy: Essentials · 2026'],
   languageList: [
     { name: 'Čeština', level: 'rodilý' },
-    { name: 'Vietnamština', level: 'mluvená C2 / psaná B1' },
+    { name: 'Vietnamština', level: 'C2 / B1' },
     { name: 'English', level: 'B2' },
   ],
   communityText:
@@ -192,7 +192,7 @@ const en: Copy = {
   skillGroups: [
     { label: 'Web', items: 'WordPress · HTML/CSS · JavaScript · React · SQL' },
     { label: 'Automation', items: 'Python · Playwright · n8n' },
-    { label: 'AI', items: 'Claude Code · AI agents in n8n · LLM integration · prompt engineering · model evaluation' },
+    { label: 'AI', items: 'agentic engineering · LLM integration · prompt engineering · model evaluation' },
     { label: 'Tools', items: 'Git · Figma' },
   ],
   entries: [
@@ -221,7 +221,7 @@ const en: Copy = {
       ],
     },
     {
-      period: '2023–2024',
+      period: '2023 & 2024',
       note: '2-week placements',
       role: 'Web development intern',
       org: 'Robology, ANT Studio',
@@ -277,7 +277,7 @@ const en: Copy = {
   certificateList: ['n8n Academy: AI, Testing & Best Practices · 2026', 'n8n Academy: Integrations & APIs · 2026', 'n8n Academy: Essentials · 2026'],
   languageList: [
     { name: 'Czech', level: 'native' },
-    { name: 'Vietnamese', level: 'spoken C2 / written B1' },
+    { name: 'Vietnamese', level: 'C2 / B1' },
     { name: 'English', level: 'B2' },
   ],
   communityText:

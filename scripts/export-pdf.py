@@ -30,15 +30,19 @@ def main() -> None:
     with sync_playwright() as p:
         browser = p.chromium.launch()
         page = browser.new_page(viewport={"width": 1400, "height": 1250})
-        page.goto(BASE, wait_until="load")
+        page.goto(BASE, wait_until="networkidle")
         page.wait_for_selector(".page")
         page.evaluate("() => document.fonts.ready")
         page.wait_for_timeout(1200)
 
         for lang in ("cs", "en"):
             if page.get_attribute(".page", "lang") != lang:
+                # The toggle is a no-op until React hydrates; wait for the
+                # language to actually flip so a slow first load can't leave
+                # the wrong language in the PDF.
                 page.click('[data-testid="language-toggle"]')
-                page.wait_for_timeout(500)
+                page.wait_for_function(f"() => document.querySelector('.page').lang === '{lang}'")
+                page.wait_for_timeout(300)
             pdf = page.pdf(
                 format="A4",
                 print_background=True,
