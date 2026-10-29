@@ -91,7 +91,7 @@ const cs: Copy = {
       bullets: ['Rozšiřování pražské komunity n8n: organizace meetupů, hackathonů a přednášek'],
     },
     {
-      period: 'od 08/2025',
+      period: '08/2025–09/2026',
       note: 'hybridně',
       role: 'Juniorní webový vývojář',
       org: 'Mravenci.cz',
@@ -204,7 +204,7 @@ const en: Copy = {
       bullets: ['Growing the Prague n8n community by organising meetups, hackathons and talks'],
     },
     {
-      period: 'since 08/2025',
+      period: '08/2025–09/2026',
       note: 'hybrid',
       role: 'Junior web developer',
       org: 'Mravenci.cz',
