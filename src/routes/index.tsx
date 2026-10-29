@@ -88,7 +88,7 @@ const cs: Copy = {
       note: 'komunitní role',
       role: 'n8n Ambassador',
       org: 'n8n · Praha',
-      bullets: ['Rozšiřuji pražskou komunitu n8n: meetupy, hackathony a přednášky, první meetup připravuji na prosinec 2026'],
+      bullets: ['Rozšiřování pražské komunity n8n: organizace meetupů, hackathonů a přednášek'],
     },
     {
       period: 'od 08/2025',
@@ -201,7 +201,7 @@ const en: Copy = {
       note: 'community role',
       role: 'n8n Ambassador',
       org: 'n8n · Prague',
-      bullets: ['Growing the Prague n8n community through meetups, hackathons and talks; first meetup planned for December 2026'],
+      bullets: ['Growing the Prague n8n community by organising meetups, hackathons and talks'],
     },
     {
       period: 'since 08/2025',
