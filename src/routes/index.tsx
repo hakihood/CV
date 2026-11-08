@@ -204,7 +204,7 @@ const en: Copy = {
       role: 'n8n Ambassador',
       org: 'n8n · Prague',
       bullets: [
-        'Growing the Prague n8n community through meetups, hackathons and talks',
+        'Growing the Prague n8n community through meetups and hackathons',
         'Co-hosted a whole-day n8n coworking session at VŠE as part of the Dny AI festival: intro talk on n8n, then hands-on help for ~35 attendees',
       ],
     },
