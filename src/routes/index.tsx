@@ -88,7 +88,10 @@ const cs: Copy = {
       note: 'komunitní role',
       role: 'n8n Ambassador',
       org: 'n8n · Praha',
-      bullets: ['Rozšiřování pražské komunity n8n: organizace meetupů, hackathonů a přednášek'],
+      bullets: [
+        'Rozšiřování pražské komunity n8n: meetupy, hackathony a přednášky',
+        'Spoluorganizace celodenní n8n coworking session na VŠE v rámci festivalu Dny AI: úvodní přednáška o n8n a pomoc ~35 účastníkům',
+      ],
     },
     {
       period: '08/2025–09/2026',
@@ -152,7 +155,6 @@ const cs: Copy = {
         { label: 'DS Wantíci', href: 'https://dswantici.cz/', note: 'dětská skupina' },
         { label: 'DS Wanted', href: 'https://www.dswanted.cz/', note: 'taneční skupina', status: 'Ve vývoji' },
         { label: 'Mérica Horses', href: 'https://mericahorses.cz/', note: 'stáj a zookoutek' },
-        { label: 'Malá Levná Auta', href: 'https://malalevnaauta.cz/', note: 'autopůjčovna' },
       ],
     },
   ],
@@ -201,7 +203,10 @@ const en: Copy = {
       note: 'community role',
       role: 'n8n Ambassador',
       org: 'n8n · Prague',
-      bullets: ['Growing the Prague n8n community by organising meetups, hackathons and talks'],
+      bullets: [
+        'Growing the Prague n8n community through meetups, hackathons and talks',
+        'Co-hosted a whole-day n8n coworking session at VŠE as part of the Dny AI festival: intro talk on n8n, then hands-on help for ~35 attendees',
+      ],
     },
     {
       period: '08/2025–09/2026',
@@ -265,7 +270,6 @@ const en: Copy = {
         { label: 'DS Wantíci', href: 'https://dswantici.cz/', note: 'children’s group' },
         { label: 'DS Wanted', href: 'https://www.dswanted.cz/', note: 'dance group', status: 'In progress' },
         { label: 'Mérica Horses', href: 'https://mericahorses.cz/', note: 'stable & mini zoo' },
-        { label: 'Malá Levná Auta', href: 'https://malalevnaauta.cz/', note: 'car rental' },
       ],
     },
   ],
