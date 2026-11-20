@@ -45,6 +45,10 @@ def main() -> None:
                 page.wait_for_timeout(300)
             pdf = page.pdf(
                 format="A4",
+                # Use the stylesheet's exact @page A4 size. Chrome's own "A4"
+                # format rounds the page ~0.3 mm taller than the 297 mm sheet,
+                # which left a thin white strip along the top edge.
+                prefer_css_page_size=True,
                 print_background=True,
                 margin={"top": "0", "right": "0", "bottom": "0", "left": "0"},
             )

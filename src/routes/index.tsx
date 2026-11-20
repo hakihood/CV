@@ -187,7 +187,7 @@ const cs: Copy = {
   languageList: [
     { name: 'Čeština', level: 'rodilý' },
     { name: 'Vietnamština', level: 'C2 / B1' },
-    { name: 'English', level: 'B2' },
+    { name: 'Angličtina', level: 'B2' },
   ],
 }
 
