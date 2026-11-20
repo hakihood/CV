@@ -29,9 +29,6 @@ function ArrowIcon() {
 
 type SkillGroup = { label: string; items: string }
 type Entry = { period: string; note: string; role: string; org: string; bullets: string[]; links?: { label: string; href: string }[] }
-/* A bullet is plain text, or a { lead, text } pair whose lead renders bold
-   (Problem / Solution / Process style write-ups). */
-type ProjectBullet = string | { lead: string; text: string }
 type Project = {
   label: string
   title: string
@@ -39,7 +36,7 @@ type Project = {
   year?: string
   /* A short prose description, for cards that read better as one paragraph. */
   text?: string
-  bullets?: ProjectBullet[]
+  bullets?: string[]
   stack?: string
   repo?: { label: string; href: string }
   links?: { label: string; href: string; note: string; status?: string }[]
@@ -59,6 +56,8 @@ type Copy = {
   education: string
   certificates: string
   languages: string
+  community: string
+  communityText: string
   experience: string
   selectedWork: string
   summary: string
@@ -83,12 +82,14 @@ const cs: Copy = {
   education: 'Vzdělání',
   certificates: 'Certifikáty',
   languages: 'Jazyky',
+  community: 'Komunita',
+  communityText: 'Pravidelně se účastním AI meetupů, hackathonů a tech konferencí v Česku i zahraničí. Jsem také aktivním členem komunity The Vibe Coders.',
   experience: 'Zkušenosti',
   selectedWork: 'Projekty',
   summary:
-    'Jsem webový vývojář a automatizační specialista a studuji Informační management na ZČU v Plzni. Předtím jsem vystudoval obor Vývoj aplikací a webových stránek na SPŠE Plzeň. Pokročile ovládám WordPress, HTML, CSS, JavaScript a SQL, základy mám v Reactu a Pythonu. Nejvíc mě baví automatizace a AI, protože si s nimi můžu zjednodušit práci i život. Pravidelně se účastním AI meetupů, hackathonů a tech konferencí v Česku i v zahraničí a jsem členem komunity The Vibe Coders.',
+    'Jsem webový vývojář a automatizační specialista a studuji Informační management na ZČU v Plzni. Předtím jsem vystudoval obor Vývoj aplikací a webových stránek na SPŠE Plzeň. Pokročile ovládám WordPress, HTML, CSS, JavaScript a SQL, základy mám v Reactu a Pythonu. Nejvíc mě baví automatizace a AI, protože si s nimi můžu zjednodušit práci i život.',
   skillGroups: [
-    { label: 'Web', items: 'WordPress · HTML/CSS · JavaScript · React · SQL' },
+    { label: 'Web', items: 'WordPress · Webflow · HTML/CSS · JavaScript · React · SQL' },
     { label: 'Automatizace', items: 'Python · Playwright · n8n' },
     { label: 'AI', items: 'agentic engineering · využití LLM · prompt engineering · evaluace modelů' },
     { label: 'Nástroje', items: 'Git · Figma' },
@@ -96,7 +97,7 @@ const cs: Copy = {
   entries: [
     {
       period: 'od 11/2026',
-      note: 'remote · externě',
+      note: 'remote',
       role: 'Webflow & Automation Developer',
       org: 'Nameless',
       bullets: ['Tvorba a správa webů ve Webflow', 'Automatizace manuální práce v n8n a kódem'],
@@ -148,12 +149,9 @@ const cs: Copy = {
       title: 'Job Finder',
       year: '2026',
       bullets: [
-        { lead: 'Problém', text: 'Každý den jsem ručně procházel několik pracovních portálů plných duplicit a nerelevantních nabídek.' },
-        { lead: 'Řešení', text: 'Workflow nabídky každý den sbírá a odstraňuje duplicity. LLM hodnotí shodu s mým profilem a nejlepší nabídky posílá na Discord.' },
-        {
-          lead: 'Postup',
-          text: 'Zadání jsem prověřil skillem grill-me (Matt Pocock), sepsal PRD a rozdělil ho na issues. Podle nich AI agent stavěl workflow přes n8n MCP a oficiální plugin. Výstup kontrolovali dva automatičtí revieweři: jeden konvence (pojmenování uzlů, poznámky, globální error trigger), druhý funkčnost a testovací běhy.',
-        },
+        'Workflow každý den sbírá nabídky z pracovních portálů a odstraňuje duplicity. LLM hodnotí, jak odpovídají mému profilu, a nejlepší pošle na Discord.',
+        'Zadání jsem prověřil skillem grill-me (Matt Pocock), sepsal PRD a rozdělil ho na issues. Podle nich AI agent stavěl workflow přes n8n MCP a oficiální plugin.',
+        'Výstup kontrolovali dva automatičtí revieweři: jeden hlídal konvence (pojmenování uzlů, poznámky, globální error trigger), druhý funkčnost a testovací běhy.',
       ],
       stack: 'n8n · MCP · LLM · PostgreSQL/Supabase',
     },
@@ -176,7 +174,7 @@ const cs: Copy = {
       stack: 'React · Tailwind CSS',
     },
     {
-      label: 'Hackathon · 3. místo',
+      label: 'Hackathon · 3. místo · tým 3 lidí',
       title: 'Nudge',
       org: 'AI Tinkerers Prague',
       year: '11/2026',
@@ -210,12 +208,14 @@ const en: Copy = {
   education: 'Education',
   certificates: 'Certificates',
   languages: 'Languages',
+  community: 'Community',
+  communityText: 'I regularly attend AI meetups, hackathons and tech conferences in Czechia and abroad. I’m also an active member of The Vibe Coders community.',
   experience: 'Experience',
   selectedWork: 'Projects',
   summary:
-    'I’m a web developer and automation specialist, studying Information Management at the University of West Bohemia in Pilsen. Before that, I graduated in application and web development at SPŠE Plzeň. I have advanced skills in WordPress, HTML, CSS, JavaScript and SQL, and the basics of React and Python. I enjoy automation and AI most, because they make both work and life simpler. I regularly attend AI meetups, hackathons and tech conferences in Czechia and abroad, and I’m a member of The Vibe Coders community.',
+    'I’m a web developer and automation specialist, studying Information Management at the University of West Bohemia in Pilsen. Before that, I graduated in application and web development at SPŠE Plzeň. I have advanced skills in WordPress, HTML, CSS, JavaScript and SQL, and the basics of React and Python. I enjoy automation and AI most, because they make both work and life simpler.',
   skillGroups: [
-    { label: 'Web', items: 'WordPress · HTML/CSS · JavaScript · React · SQL' },
+    { label: 'Web', items: 'WordPress · Webflow · HTML/CSS · JavaScript · React · SQL' },
     { label: 'Automation', items: 'Python · Playwright · n8n' },
     { label: 'AI', items: 'agentic engineering · applied LLMs · prompt engineering · model evaluation' },
     { label: 'Tools', items: 'Git · Figma' },
@@ -223,7 +223,7 @@ const en: Copy = {
   entries: [
     {
       period: 'since 11/2026',
-      note: 'remote · part-time',
+      note: 'remote',
       role: 'Webflow & Automation Developer',
       org: 'Nameless',
       bullets: ['Building and maintaining websites in Webflow', 'Automating manual work with n8n and code'],
@@ -275,12 +275,9 @@ const en: Copy = {
       title: 'Job Finder',
       year: '2026',
       bullets: [
-        { lead: 'Problem', text: 'Every day I went through several job boards by hand, full of duplicates and irrelevant listings.' },
-        { lead: 'Solution', text: 'The workflow collects listings every day and removes duplicates. An LLM scores how well each one matches my profile and sends the best ones to Discord.' },
-        {
-          lead: 'Process',
-          text: 'I stress-tested the brief with the grill-me skill (Matt Pocock), wrote a PRD and split it into issues. Following them, an AI agent built the workflow through the n8n MCP and the official plugin. Two automated reviewers checked the output: one for conventions (node naming, notes, a global error trigger), the other for functionality and test runs.',
-        },
+        'The workflow collects listings from job boards every day and removes duplicates. An LLM scores how well they match my profile and sends the best ones to Discord.',
+        'I stress-tested the brief with the grill-me skill (Matt Pocock), wrote a PRD and split it into issues. Following them, an AI agent built the workflow through the n8n MCP and the official plugin.',
+        'Two automated reviewers checked the output: one watched conventions (node naming, notes, a global error trigger), the other functionality and test runs.',
       ],
       stack: 'n8n · MCP · LLM · PostgreSQL/Supabase',
     },
@@ -303,7 +300,7 @@ const en: Copy = {
       stack: 'React · Tailwind CSS',
     },
     {
-      label: 'Hackathon · 3rd place',
+      label: 'Hackathon · 3rd place · team of 3',
       title: 'Nudge',
       org: 'AI Tinkerers Prague',
       year: '11/2026',
@@ -366,17 +363,9 @@ function ProjectList({ projects }: { projects: Project[] }) {
           {project.text ? <p className="project-text">{project.text}</p> : null}
           {project.bullets ? (
             <ul className="bullets">
-              {project.bullets.map((bullet) =>
-                typeof bullet === 'string' ? (
-                  <li key={bullet}>{bullet}</li>
-                ) : (
-                  <li key={bullet.lead}>
-                    <span>
-                      <strong className="bullet-lead">{bullet.lead}:</strong> {bullet.text}
-                    </span>
-                  </li>
-                ),
-              )}
+              {project.bullets.map((bullet) => (
+                <li key={bullet}>{bullet}</li>
+              ))}
             </ul>
           ) : null}
           {project.links ? (
@@ -519,6 +508,10 @@ function App() {
                   </li>
                 ))}
               </ul>
+            </RailSection>
+
+            <RailSection title={t.community}>
+              <p className="rail-text">{t.communityText}</p>
             </RailSection>
           </aside>
 
