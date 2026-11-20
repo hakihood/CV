@@ -290,7 +290,6 @@ a.contact-line:hover span { color: var(--cv-accent); }
 .bullets li { display: grid; grid-template-columns: 3.2mm 1fr; }
 .bullets li::before { content: '–'; color: var(--cv-accent-ink); font-weight: 700; }
 .project-text { margin: 1mm 0 0; font-size: var(--fs-body); line-height: 1.35; color: var(--ink-soft); }
-.stack-link { font-family: 'DM Sans', system-ui, sans-serif; font-size: var(--fs-body); font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--cv-accent); }
 
 .project-grid { display: grid; gap: 1.3mm; }
 .project { border: 1px solid var(--rule); padding: 1.5mm 2.6mm 1.7mm; }

@@ -38,7 +38,6 @@ type Project = {
   text?: string
   bullets?: string[]
   stack?: string
-  repo?: { label: string; href: string }
   links?: { label: string; href: string; note: string; status?: string }[]
 }
 type Study = { school: string; field: string; period: string }
@@ -175,8 +174,7 @@ const cs: Copy = {
       org: 'AI Tinkerers Prague',
       year: '11/2026',
       text: 'Hlasový AI doučovatel matematiky pro děti 6–10 let. Dítě vyfotí úkol a Nudge ho látku naučí mluvením, bez psaní a čtení, a pak mu dá podobné příklady na procvičení. Výsledek neprozradí a díky vektorové databázi se učí z každé lekce.',
-      stack: 'Claude Code · ElevenLabs · Qdrant',
-      repo: { label: 'GitHub', href: 'https://github.com/pylyf/hackathon1311' },
+      links: [{ label: 'GitHub', href: 'https://github.com/pylyf/hackathon1311', note: 'ElevenLabs · Qdrant' }],
     },
   ],
   studies: [
@@ -297,8 +295,7 @@ const en: Copy = {
       org: 'AI Tinkerers Prague',
       year: '11/2026',
       text: 'Voice AI maths tutor for children aged 6–10. The child takes a photo of their homework and Nudge teaches the topic by talking, with no reading or writing, then gives similar problems to practise. It never gives away the answer, and a vector database lets it learn from every lesson.',
-      stack: 'Claude Code · ElevenLabs · Qdrant',
-      repo: { label: 'GitHub', href: 'https://github.com/pylyf/hackathon1311' },
+      links: [{ label: 'GitHub', href: 'https://github.com/pylyf/hackathon1311', note: 'ElevenLabs · Qdrant' }],
     },
   ],
   studies: [
@@ -373,17 +370,7 @@ function ProjectList({ projects }: { projects: Project[] }) {
               ))}
             </ul>
           ) : null}
-          {project.stack || project.repo ? (
-            <p className="stack">
-              {project.stack}
-              {project.stack && project.repo ? ' · ' : null}
-              {project.repo ? (
-                <a className="stack-link" href={project.repo.href} target="_blank" rel="noreferrer">
-                  {project.repo.label} <ArrowIcon />
-                </a>
-              ) : null}
-            </p>
-          ) : null}
+          {project.stack ? <p className="stack">{project.stack}</p> : null}
         </article>
       ))}
     </div>
