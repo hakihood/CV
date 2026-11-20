@@ -91,8 +91,7 @@ const cs: Copy = {
   skillGroups: [
     { label: 'Web', items: 'WordPress · Webflow · HTML/CSS · JavaScript · React · SQL' },
     { label: 'Automatizace', items: 'Python · Playwright · n8n' },
-    { label: 'AI', items: 'agentic engineering · využití LLM · prompt engineering · evaluace modelů' },
-    { label: 'Nástroje', items: 'Git · Figma' },
+    { label: 'AI', items: 'agentic engineering · využití LLM · evaluace modelů' },
   ],
   entries: [
     {
@@ -142,7 +141,6 @@ const cs: Copy = {
         'Součástí je i důkladnější audit s knihovnou Playwright, který projde i weby vykreslované JavaScriptem a termíny schované v kalendářích',
         'Vlastní evaluační sada na porovnávání AI modelů',
       ],
-      stack: 'Python · Playwright · API',
     },
     {
       label: 'Vlastní automatizace',
@@ -153,7 +151,6 @@ const cs: Copy = {
         'Zadání jsem prověřil skillem grill-me (Matt Pocock), sepsal PRD a rozdělil ho na issues. Podle nich AI agent stavěl workflow přes n8n MCP a oficiální plugin.',
         'Výstup kontrolovali dva automatičtí revieweři: jeden hlídal konvence (pojmenování uzlů, poznámky, globální error trigger), druhý funkčnost a testovací běhy.',
       ],
-      stack: 'n8n · MCP · LLM · PostgreSQL/Supabase',
     },
     {
       label: 'Samostatné webové projekty',
@@ -171,7 +168,6 @@ const cs: Copy = {
       label: 'Maturitní projekt',
       title: 'LaceHub',
       text: 'Webová platforma pro přeprodejce tenisek, která automaticky páruje nabídku s poptávkou. Když se inventář prodejce shoduje s poptávkou kupujícího, oběma stranám automaticky přijde e-mail.',
-      stack: 'React · Tailwind CSS',
     },
     {
       label: 'Hackathon · 3. místo · tým 3 lidí',
@@ -217,8 +213,7 @@ const en: Copy = {
   skillGroups: [
     { label: 'Web', items: 'WordPress · Webflow · HTML/CSS · JavaScript · React · SQL' },
     { label: 'Automation', items: 'Python · Playwright · n8n' },
-    { label: 'AI', items: 'agentic engineering · applied LLMs · prompt engineering · model evaluation' },
-    { label: 'Tools', items: 'Git · Figma' },
+    { label: 'AI', items: 'agentic engineering · applied LLMs · model evaluation' },
   ],
   entries: [
     {
@@ -268,7 +263,6 @@ const en: Copy = {
         'Includes a deeper audit built on Playwright that also covers JavaScript-rendered sites and dates buried in calendars',
         'Own evaluation set for comparing AI models',
       ],
-      stack: 'Python · Playwright · API',
     },
     {
       label: 'Personal automation',
@@ -279,7 +273,6 @@ const en: Copy = {
         'I stress-tested the brief with the grill-me skill (Matt Pocock), wrote a PRD and split it into issues. Following them, an AI agent built the workflow through the n8n MCP and the official plugin.',
         'Two automated reviewers checked the output: one watched conventions (node naming, notes, a global error trigger), the other functionality and test runs.',
       ],
-      stack: 'n8n · MCP · LLM · PostgreSQL/Supabase',
     },
     {
       label: 'Independent web builds',
@@ -297,7 +290,6 @@ const en: Copy = {
       label: 'Final-year project',
       title: 'LaceHub',
       text: 'Web platform for sneaker resellers that automatically matches supply with demand. When a seller’s inventory matches a buyer’s request, both sides get an email automatically.',
-      stack: 'React · Tailwind CSS',
     },
     {
       label: 'Hackathon · 3rd place · team of 3',

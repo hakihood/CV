@@ -64,7 +64,7 @@
   /* --- CV: page geometry (single source of truth for screen AND print) --- */
   --page-w: 210mm;
   --page-h: 297mm;
-  --page-pad-y: 9mm;
+  --page-pad-y: 7.5mm;
   --page-pad-x: 8mm;
   --rail-w: 66mm;
   --rail-gap: 6mm;
@@ -120,10 +120,10 @@ a { color: inherit; }
   --fs-name: 26pt;
   --fs-role: 8.6pt;
   --fs-eyebrow: 7.2pt;
-  --fs-h2: 16.5pt;
+  --fs-h2: 15pt;
   --fs-h3: 10.5pt;
-  --fs-project: 12.5pt;
-  --fs-body: 8.1pt;
+  --fs-project: 11.5pt;
+  --fs-body: 7.7pt;
   --fs-meta: 7.9pt;
   --fs-rail: 8.5pt;
   --fs-small: 7.5pt;
@@ -195,7 +195,7 @@ a { color: inherit; }
 }
 .portrait {
   display: block;
-  width: 31mm;
+  width: 27mm;
   height: auto;
   aspect-ratio: 1 / 1;
   object-fit: cover;
@@ -262,7 +262,7 @@ a.contact-line:hover span { color: var(--cv-accent); }
 /* Bottom padding is tighter than the top so the main column fits one A4 page. */
 .sheet-main { padding: var(--page-pad-y) var(--main-pad-r) 6mm var(--main-pad-l); }
 .sheet-main > .block:first-child { margin-top: 0; }
-.intro { margin: 2.6mm 0 0; font-size: var(--fs-body); line-height: 1.45; }
+.intro { margin: 2mm 0 0; font-size: var(--fs-body); line-height: 1.4; }
 
 .block { margin-top: 2.2mm; }
 .block-title {
@@ -286,14 +286,14 @@ a.contact-line:hover span { color: var(--cv-accent); }
 .entry-links a:hover { color: var(--cv-accent-ink); }
 .link-arrow { color: var(--cv-accent-ink); }
 
-.bullets { list-style: none; margin: 1.4mm 0 0; padding: 0; display: grid; gap: .8mm; font-size: var(--fs-body); line-height: 1.35; color: var(--ink-soft); }
+.bullets { list-style: none; margin: 1mm 0 0; padding: 0; display: grid; gap: .5mm; font-size: var(--fs-body); line-height: 1.35; color: var(--ink-soft); }
 .bullets li { display: grid; grid-template-columns: 3.2mm 1fr; }
 .bullets li::before { content: '–'; color: var(--cv-accent-ink); font-weight: 700; }
-.project-text { margin: 1.4mm 0 0; font-size: var(--fs-body); line-height: 1.4; color: var(--ink-soft); }
+.project-text { margin: 1mm 0 0; font-size: var(--fs-body); line-height: 1.35; color: var(--ink-soft); }
 .stack-link { font-family: 'DM Sans', system-ui, sans-serif; font-size: var(--fs-body); font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--cv-accent); }
 
-.project-grid { display: grid; gap: 1.6mm; }
-.project { border: 1px solid var(--rule); padding: 1.8mm 2.6mm 2mm; }
+.project-grid { display: grid; gap: 1.3mm; }
+.project { border: 1px solid var(--rule); padding: 1.5mm 2.6mm 1.7mm; }
 .project.is-featured { background: hsl(28 91% 58% / .1); border-color: hsl(28 91% 58% / .38); }
 .project-head { display: flex; align-items: baseline; justify-content: space-between; gap: 4mm; }
 .project-label {
