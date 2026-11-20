@@ -29,7 +29,21 @@ function ArrowIcon() {
 
 type SkillGroup = { label: string; items: string }
 type Entry = { period: string; note: string; role: string; org: string; bullets: string[]; links?: { label: string; href: string }[] }
-type Project = { label: string; title: string; org?: string; year?: string; bullets: string[]; stack?: string; links?: { label: string; href: string; note: string; status?: string }[] }
+/* A bullet is plain text, or a { lead, text } pair whose lead renders bold
+   (Problem / Solution / Process style write-ups). */
+type ProjectBullet = string | { lead: string; text: string }
+type Project = {
+  label: string
+  title: string
+  org?: string
+  year?: string
+  /* A short prose description, for cards that read better as one paragraph. */
+  text?: string
+  bullets?: ProjectBullet[]
+  stack?: string
+  repo?: { label: string; href: string }
+  links?: { label: string; href: string; note: string; status?: string }[]
+}
 type Study = { school: string; field: string; period: string }
 
 type Copy = {
@@ -45,7 +59,6 @@ type Copy = {
   education: string
   certificates: string
   languages: string
-  community: string
   experience: string
   selectedWork: string
   summary: string
@@ -55,7 +68,6 @@ type Copy = {
   studies: Study[]
   certificateList: string[]
   languageList: { name: string; level: string }[]
-  communityText: string
 }
 
 const cs: Copy = {
@@ -71,18 +83,24 @@ const cs: Copy = {
   education: 'Vzdělání',
   certificates: 'Certifikáty',
   languages: 'Jazyky',
-  community: 'Komunita',
   experience: 'Zkušenosti',
-  selectedWork: 'Vybraná tvorba',
+  selectedWork: 'Projekty',
   summary:
-    'Juniorní webový vývojář a student Informačního managementu na Západočeské univerzitě v Plzni. Na SPŠE Plzeň jsem vystudoval Vývoj aplikací a webových stránek. Mám pokročilé znalosti WordPressu, HTML, CSS, JavaScriptu a SQL, k tomu základy Reactu a Pythonu. Rád poznávám nové lidi a učím se novým věcem. Nejvíc mě baví automatizace, umělá inteligence a hledání způsobů, jak si s ní zjednodušit život.',
+    'Jsem webový vývojář a automatizační specialista a studuji Informační management na ZČU v Plzni. Předtím jsem vystudoval obor Vývoj aplikací a webových stránek na SPŠE Plzeň. Pokročile ovládám WordPress, HTML, CSS, JavaScript a SQL, základy mám v Reactu a Pythonu. Nejvíc mě baví automatizace a AI, protože si s nimi můžu zjednodušit práci i život. Pravidelně se účastním AI meetupů, hackathonů a tech konferencí v Česku i v zahraničí a jsem členem komunity The Vibe Coders.',
   skillGroups: [
     { label: 'Web', items: 'WordPress · HTML/CSS · JavaScript · React · SQL' },
     { label: 'Automatizace', items: 'Python · Playwright · n8n' },
-    { label: 'AI', items: 'agentic engineering · integrace LLM · prompt engineering · evaluace modelů' },
+    { label: 'AI', items: 'agentic engineering · využití LLM · prompt engineering · evaluace modelů' },
     { label: 'Nástroje', items: 'Git · Figma' },
   ],
   entries: [
+    {
+      period: 'od 11/2026',
+      note: 'remote · externě',
+      role: 'Webflow & Automation Developer',
+      org: 'Nameless',
+      bullets: ['Tvorba a správa webů ve Webflow', 'Automatizace manuální práce v n8n a kódem'],
+    },
     {
       period: 'od 09/2026',
       note: 'komunitní role',
@@ -110,16 +128,6 @@ const cs: Copy = {
         { label: 'vip.petrranda.cz', href: 'https://vip.petrranda.cz/' },
       ],
     },
-    {
-      period: '2023 a 2024',
-      note: 'dvoutýdenní praxe',
-      role: 'Stážista webového vývoje',
-      org: 'Robology, ANT Studio',
-      bullets: [
-        'Robology (2024): Elementor, převod návrhů z Figmy do WordPressu',
-        'ANT Studio (2023): obsahová editace v Elementoru, modernizace starších webů, blog, responzivita',
-      ],
-    },
   ],
   projects: [
     {
@@ -136,14 +144,18 @@ const cs: Copy = {
       stack: 'Python · Playwright · API',
     },
     {
-      label: 'Maturitní projekt',
-      title: 'LaceHub',
+      label: 'Vlastní automatizace',
+      title: 'Job Finder',
+      year: '2026',
       bullets: [
-        'Webová platforma pro přeprodejce tenisek',
-        'Automatické párování nabídky a poptávky',
-        'Při shodě inventáře odchází e-mail oběma stranám',
+        { lead: 'Problém', text: 'Každý den jsem ručně procházel několik pracovních portálů plných duplicit a nerelevantních nabídek.' },
+        { lead: 'Řešení', text: 'Workflow nabídky každý den sbírá a odstraňuje duplicity. LLM hodnotí shodu s mým profilem a nejlepší nabídky posílá na Discord.' },
+        {
+          lead: 'Postup',
+          text: 'Zadání jsem prověřil skillem grill-me (Matt Pocock), sepsal PRD a rozdělil ho na issues. Podle nich AI agent stavěl workflow přes n8n MCP a oficiální plugin. Výstup kontrolovali dva automatičtí revieweři: jeden konvence (pojmenování uzlů, poznámky, globální error trigger), druhý funkčnost a testovací běhy.',
+        },
       ],
-      stack: 'React · Tailwind CSS',
+      stack: 'n8n · MCP · LLM · PostgreSQL/Supabase',
     },
     {
       label: 'Samostatné webové projekty',
@@ -157,10 +169,24 @@ const cs: Copy = {
         { label: 'Mérica Horses', href: 'https://mericahorses.cz/', note: 'stáj a zookoutek' },
       ],
     },
+    {
+      label: 'Maturitní projekt',
+      title: 'LaceHub',
+      text: 'Webová platforma pro přeprodejce tenisek, která automaticky páruje nabídku s poptávkou. Když se inventář prodejce shoduje s poptávkou kupujícího, oběma stranám automaticky přijde e-mail.',
+      stack: 'React · Tailwind CSS',
+    },
+    {
+      label: 'Hackathon · 3. místo',
+      title: 'Nudge',
+      org: 'AI Tinkerers Prague',
+      year: '11/2026',
+      text: 'Hlasový AI doučovatel matematiky pro děti 6–10 let. Dítě vyfotí úkol a Nudge ho látku naučí mluvením, bez psaní a čtení, a pak mu dá podobné příklady na procvičení. Výsledek neprozradí a díky vektorové databázi se učí z každé lekce.',
+      stack: 'Claude Code · ElevenLabs · Qdrant',
+      repo: { label: 'GitHub', href: 'https://github.com/pylyf/hackathon1311' },
+    },
   ],
   studies: [
     { school: 'Západočeská univerzita, Fakulta ekonomická', field: 'Informační management', period: 'od 2026/27' },
-    { school: 'Západočeská univerzita, Fakulta aplikovaných věd', field: 'Softwarové inženýrství', period: '2025–2026' },
     { school: 'SPŠE Plzeň', field: 'Vývoj aplikací a webových stránek', period: '2021–2025' },
   ],
   certificateList: ['n8n Academy: AI, Testing & Best Practices · 2026', 'n8n Academy: Integrations & APIs · 2026', 'n8n Academy: Essentials · 2026'],
@@ -169,8 +195,6 @@ const cs: Copy = {
     { name: 'Vietnamština', level: 'C2 / B1' },
     { name: 'English', level: 'B2' },
   ],
-  communityText:
-    'Pravidelně se účastním AI meetupů, hackathonů a tech konferencí v Česku i zahraničí. Jsem také aktivním členem komunity The Vibe Coders. Ve volném čase hraji na trubku v několika orchestrech a rekreačně se věnuji šachu.',
 }
 
 const en: Copy = {
@@ -186,18 +210,24 @@ const en: Copy = {
   education: 'Education',
   certificates: 'Certificates',
   languages: 'Languages',
-  community: 'Community',
   experience: 'Experience',
-  selectedWork: 'Selected work',
+  selectedWork: 'Projects',
   summary:
-    'Junior web developer and Information Management student at the University of West Bohemia in Pilsen. I graduated in application and web development at SPŠE Plzeň. I have advanced knowledge of WordPress, HTML, CSS, JavaScript and SQL, plus the basics of React and Python. I like meeting new people and picking up new skills. Automation and AI interest me most, along with finding ways to make life simpler with them.',
+    'I’m a web developer and automation specialist, studying Information Management at the University of West Bohemia in Pilsen. Before that, I graduated in application and web development at SPŠE Plzeň. I have advanced skills in WordPress, HTML, CSS, JavaScript and SQL, and the basics of React and Python. I enjoy automation and AI most, because they make both work and life simpler. I regularly attend AI meetups, hackathons and tech conferences in Czechia and abroad, and I’m a member of The Vibe Coders community.',
   skillGroups: [
     { label: 'Web', items: 'WordPress · HTML/CSS · JavaScript · React · SQL' },
     { label: 'Automation', items: 'Python · Playwright · n8n' },
-    { label: 'AI', items: 'agentic engineering · LLM integration · prompt engineering · model evaluation' },
+    { label: 'AI', items: 'agentic engineering · applied LLMs · prompt engineering · model evaluation' },
     { label: 'Tools', items: 'Git · Figma' },
   ],
   entries: [
+    {
+      period: 'since 11/2026',
+      note: 'remote · part-time',
+      role: 'Webflow & Automation Developer',
+      org: 'Nameless',
+      bullets: ['Building and maintaining websites in Webflow', 'Automating manual work with n8n and code'],
+    },
     {
       period: 'since 09/2026',
       note: 'community role',
@@ -225,16 +255,6 @@ const en: Copy = {
         { label: 'vip.petrranda.cz', href: 'https://vip.petrranda.cz/' },
       ],
     },
-    {
-      period: '2023 & 2024',
-      note: '2-week placements',
-      role: 'Web development intern',
-      org: 'Robology, ANT Studio',
-      bullets: [
-        'Robology (2024): Elementor builds, Figma designs into WordPress pages',
-        'ANT Studio (2023): content editing in Elementor, modernising legacy sites, blog sections, responsive fixes',
-      ],
-    },
   ],
   projects: [
     {
@@ -251,14 +271,18 @@ const en: Copy = {
       stack: 'Python · Playwright · API',
     },
     {
-      label: 'Final-year project',
-      title: 'LaceHub',
+      label: 'Personal automation',
+      title: 'Job Finder',
+      year: '2026',
       bullets: [
-        'Web platform for sneaker resellers',
-        'Automatic matching of supply and demand',
-        'When inventory matches, an email goes to both sides',
+        { lead: 'Problem', text: 'Every day I went through several job boards by hand, full of duplicates and irrelevant listings.' },
+        { lead: 'Solution', text: 'The workflow collects listings every day and removes duplicates. An LLM scores how well each one matches my profile and sends the best ones to Discord.' },
+        {
+          lead: 'Process',
+          text: 'I stress-tested the brief with the grill-me skill (Matt Pocock), wrote a PRD and split it into issues. Following them, an AI agent built the workflow through the n8n MCP and the official plugin. Two automated reviewers checked the output: one for conventions (node naming, notes, a global error trigger), the other for functionality and test runs.',
+        },
       ],
-      stack: 'React · Tailwind CSS',
+      stack: 'n8n · MCP · LLM · PostgreSQL/Supabase',
     },
     {
       label: 'Independent web builds',
@@ -272,10 +296,24 @@ const en: Copy = {
         { label: 'Mérica Horses', href: 'https://mericahorses.cz/', note: 'stable & mini zoo' },
       ],
     },
+    {
+      label: 'Final-year project',
+      title: 'LaceHub',
+      text: 'Web platform for sneaker resellers that automatically matches supply with demand. When a seller’s inventory matches a buyer’s request, both sides get an email automatically.',
+      stack: 'React · Tailwind CSS',
+    },
+    {
+      label: 'Hackathon · 3rd place',
+      title: 'Nudge',
+      org: 'AI Tinkerers Prague',
+      year: '11/2026',
+      text: 'Voice AI maths tutor for children aged 6–10. The child takes a photo of their homework and Nudge teaches the topic by talking, with no reading or writing, then gives similar problems to practise. It never gives away the answer, and a vector database lets it learn from every lesson.',
+      stack: 'Claude Code · ElevenLabs · Qdrant',
+      repo: { label: 'GitHub', href: 'https://github.com/pylyf/hackathon1311' },
+    },
   ],
   studies: [
     { school: 'University of West Bohemia, Faculty of Economics', field: 'Information Management', period: 'from 2026/27' },
-    { school: 'University of West Bohemia, Faculty of Applied Sciences', field: 'Software Engineering', period: '2025–2026' },
     { school: 'SPŠE Plzeň', field: 'Application & web development', period: '2021–2025' },
   ],
   certificateList: ['n8n Academy: AI, Testing & Best Practices · 2026', 'n8n Academy: Integrations & APIs · 2026', 'n8n Academy: Essentials · 2026'],
@@ -284,8 +322,6 @@ const en: Copy = {
     { name: 'Vietnamese', level: 'C2 / B1' },
     { name: 'English', level: 'B2' },
   ],
-  communityText:
-    'I regularly attend AI meetups, hackathons and tech conferences at home and abroad, and I’m an active member of The Vibe Coders. In my free time I play trumpet in several orchestras and play chess for fun.',
 }
 
 const copy: Record<Language, Copy> = { cs, en }
@@ -327,11 +363,22 @@ function ProjectList({ projects }: { projects: Project[] }) {
               {project.org ? <span> @ {project.org}</span> : null}
             </h3>
           ) : null}
-          <ul className="bullets">
-            {project.bullets.map((bullet) => (
-              <li key={bullet}>{bullet}</li>
-            ))}
-          </ul>
+          {project.text ? <p className="project-text">{project.text}</p> : null}
+          {project.bullets ? (
+            <ul className="bullets">
+              {project.bullets.map((bullet) =>
+                typeof bullet === 'string' ? (
+                  <li key={bullet}>{bullet}</li>
+                ) : (
+                  <li key={bullet.lead}>
+                    <span>
+                      <strong className="bullet-lead">{bullet.lead}:</strong> {bullet.text}
+                    </span>
+                  </li>
+                ),
+              )}
+            </ul>
+          ) : null}
           {project.links ? (
             <ul className="project-links">
               {project.links.map((link) => (
@@ -345,7 +392,17 @@ function ProjectList({ projects }: { projects: Project[] }) {
               ))}
             </ul>
           ) : null}
-          {project.stack ? <p className="stack">{project.stack}</p> : null}
+          {project.stack || project.repo ? (
+            <p className="stack">
+              {project.stack}
+              {project.stack && project.repo ? ' · ' : null}
+              {project.repo ? (
+                <a className="stack-link" href={project.repo.href} target="_blank" rel="noreferrer">
+                  {project.repo.label} <ArrowIcon />
+                </a>
+              ) : null}
+            </p>
+          ) : null}
         </article>
       ))}
     </div>
@@ -507,9 +564,6 @@ function App() {
               <ProjectList projects={t.projects} />
             </Block>
 
-            <Block id="community" title={t.community}>
-              <p className="intro">{t.communityText}</p>
-            </Block>
           </div>
         </article>
       </div>
