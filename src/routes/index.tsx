@@ -137,8 +137,7 @@ const cs: Copy = {
       bullets: [
         'Nahradil ruční obcházení webů 55 středních škol v Plzeňském kraji, termíny se hledají samy',
         'Pipeline v Pythonu: stažení webů, klasifikace úryvků přes LLM, porovnání s minulým během a zápis do tabulky, ze které si web klienta bere obsah',
-        'Součástí je i důkladnější audit s knihovnou Playwright, který projde i weby vykreslované JavaScriptem a termíny schované v kalendářích',
-        'Vlastní evaluační sada na porovnávání AI modelů',
+        'Součástí je i důkladnější audit s knihovnou Playwright, který projde i weby vykreslované JavaScriptem a termíny schované v kalendářích, a vlastní evaluační sada na porovnávání AI modelů',
       ],
     },
     {
@@ -146,7 +145,7 @@ const cs: Copy = {
       title: 'Job Finder',
       year: '2026',
       bullets: [
-        'Workflow každý den sbírá nabídky z pracovních portálů a odstraňuje duplicity. LLM hodnotí, jak odpovídají mému profilu, a nejlepší pošle na Discord.',
+        'n8n workflow každý den sbírá nabídky z pracovních portálů a odstraňuje duplicity. LLM hodnotí, jak odpovídají mému profilu, a nejlepší pošle na Discord.',
         'Zadání jsem prověřil skillem grill-me (Matt Pocock), sepsal PRD a rozdělil ho na issues. Podle nich AI agent stavěl workflow přes n8n MCP a oficiální plugin.',
         'Výstup kontrolovali dva automatičtí revieweři: jeden hlídal konvence (pojmenování uzlů, poznámky, globální error trigger), druhý funkčnost a testovací běhy.',
       ],
@@ -166,6 +165,7 @@ const cs: Copy = {
     {
       label: 'Maturitní projekt',
       title: 'LaceHub',
+      stack: 'React · Tailwind CSS',
       text: 'Webová platforma pro přeprodejce tenisek, která automaticky páruje nabídku s poptávkou. Když se inventář prodejce shoduje s poptávkou kupujícího, oběma stranám automaticky přijde e-mail.',
     },
     {
@@ -258,8 +258,7 @@ const en: Copy = {
       bullets: [
         'Replaced manual checking of 55 school websites, the dates now find themselves',
         'Python pipeline: fetch the sites, classify the snippets with an LLM, diff against the previous run and write to the sheet the client’s website reads its content from',
-        'Includes a deeper audit built on Playwright that also covers JavaScript-rendered sites and dates buried in calendars',
-        'Own evaluation set for comparing AI models',
+        'Includes a deeper audit built on Playwright that also covers JavaScript-rendered sites and dates buried in calendars, plus my own evaluation set for comparing AI models',
       ],
     },
     {
@@ -267,7 +266,7 @@ const en: Copy = {
       title: 'Job Finder',
       year: '2026',
       bullets: [
-        'The workflow collects listings from job boards every day and removes duplicates. An LLM scores how well they match my profile and sends the best ones to Discord.',
+        'The n8n workflow collects listings from job boards every day and removes duplicates. An LLM scores how well they match my profile and sends the best ones to Discord.',
         'I stress-tested the brief with the grill-me skill (Matt Pocock), wrote a PRD and split it into issues. Following them, an AI agent built the workflow through the n8n MCP and the official plugin.',
         'Two automated reviewers checked the output: one watched conventions (node naming, notes, a global error trigger), the other functionality and test runs.',
       ],
@@ -287,6 +286,7 @@ const en: Copy = {
     {
       label: 'Final-year project',
       title: 'LaceHub',
+      stack: 'React · Tailwind CSS',
       text: 'Web platform for sneaker resellers that automatically matches supply with demand. When a seller’s inventory matches a buyer’s request, both sides get an email automatically.',
     },
     {
