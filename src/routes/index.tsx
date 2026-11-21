@@ -137,7 +137,7 @@ const cs: Copy = {
       bullets: [
         'Nahradil ruční obcházení webů 55 středních škol v Plzeňském kraji, termíny se hledají samy',
         'Pipeline v Pythonu: stažení webů, klasifikace úryvků přes LLM, porovnání s minulým během a zápis do tabulky, ze které si web klienta bere obsah',
-        'Součástí je i důkladnější audit s knihovnou Playwright, který projde i weby vykreslované JavaScriptem a termíny schované v kalendářích, a vlastní evaluační sada na porovnávání AI modelů',
+        'Součástí je i audit s knihovnou Playwright, který projde i weby vykreslované JavaScriptem a termíny schované v kalendářích, a vlastní evaluační sada na porovnávání AI modelů',
       ],
     },
     {
