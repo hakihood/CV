@@ -90,7 +90,6 @@ type Project = {
   org?: string
   year?: string
   /* A short prose description, for cards that read better as one paragraph. */
-  text?: string
   bullets?: string[]
   stack?: string
   links?: { label: string; href: string; note: string; status?: string }[]
@@ -221,14 +220,19 @@ const cs: Copy = {
       label: 'Maturitní projekt',
       title: 'LaceHub',
       stack: 'React · Tailwind CSS',
-      text: 'Webová platforma pro přeprodejce tenisek, která automaticky páruje nabídku s poptávkou. Když se inventář prodejce shoduje s poptávkou kupujícího, oběma stranám automaticky přijde e-mail.',
+      bullets: [
+        'Webová platforma pro přeprodejce tenisek, která automaticky páruje nabídku s poptávkou. Když se inventář prodejce shoduje s poptávkou kupujícího, oběma stranám přijde e-mail',
+      ],
     },
     {
-      label: 'Hackathon · 3. místo · tým 3 lidí',
+      label: 'Hackathon · 3.\u00a0místo · tým\u00a03\u00a0lidí',
       title: 'Nudge',
       org: 'AI Tinkerers Prague',
       year: '11/2026',
-      text: 'Hlasový AI doučovatel matematiky pro děti 6–10 let. Dítě vyfotí úkol a Nudge ho látku naučí mluvením, bez psaní a čtení, a pak mu dá podobné příklady na procvičení. Výsledek neprozradí a díky vektorové databázi se učí z každé lekce.',
+      bullets: [
+        'Hlasový AI doučovatel matematiky pro děti 6–\u206010 let. Dítě vyfotí úkol a Nudge ho látku naučí mluvením, bez psaní a čtení, a pak mu dá podobné příklady na procvičení',
+        'Výsledek neprozradí a díky vektorové databázi se učí z každé lekce',
+      ],
       links: [{ label: 'GitHub', href: 'https://github.com/pylyf/hackathon1311', note: 'ElevenLabs · Qdrant' }],
     },
   ],
@@ -342,14 +346,19 @@ const en: Copy = {
       label: 'Final-year project',
       title: 'LaceHub',
       stack: 'React · Tailwind CSS',
-      text: 'Web platform for sneaker resellers that automatically matches supply with demand. When a seller’s inventory matches a buyer’s request, both sides get an email automatically.',
+      bullets: [
+        'Web platform for sneaker resellers that automatically matches supply with demand. When a seller’s inventory matches a buyer’s request, both sides get an email automatically',
+      ],
     },
     {
-      label: 'Hackathon · 3rd place · team of 3',
+      label: 'Hackathon · 3rd\u00a0place · team\u00a0of\u00a03',
       title: 'Nudge',
       org: 'AI Tinkerers Prague',
       year: '11/2026',
-      text: 'Voice AI maths tutor for children aged 6–10. The child takes a photo of their homework and Nudge teaches the topic by talking, with no reading or writing, then gives similar problems to practise. It never gives away the answer, and a vector database lets it learn from every lesson.',
+      bullets: [
+        'Voice AI maths tutor for children aged 6–\u206010. The child photographs their homework and Nudge teaches the topic by talking, without reading or writing, then gives similar practice problems',
+        'It never gives away the answer, and a vector database lets it learn from every lesson',
+      ],
       links: [{ label: 'GitHub', href: 'https://github.com/pylyf/hackathon1311', note: 'ElevenLabs · Qdrant' }],
     },
   ],
@@ -401,10 +410,9 @@ function ProjectList({ projects }: { projects: Project[] }) {
           {project.title ? (
             <h3>
               {project.title}
-              {project.org ? <span> @ {project.org}</span> : null}
+              {project.org ? <> <span>@{'\u00a0'}{project.org}</span></> : null}
             </h3>
           ) : null}
-          {project.text ? <p className="project-text">{project.text}</p> : null}
           {project.bullets ? (
             <ul className="bullets">
               {project.bullets.map((bullet) => (
@@ -557,7 +565,7 @@ function App() {
                   </div>
                   <div className="entry-body">
                     <h3>
-                      {entry.role} <span>@ {entry.org}</span>
+                      {entry.role} <span>@{'\u00a0'}{entry.org}</span>
                     </h3>
                     <ul className="bullets">
                       {entry.bullets.map((bullet) => (

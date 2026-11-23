@@ -322,7 +322,7 @@ a.contact-line:hover span { color: var(--cv-accent); }
 .entry-meta { display: grid; align-content: start; gap: .8mm; font-family: 'DM Mono', monospace; font-size: var(--fs-meta); line-height: 1.35; color: var(--ink-soft); }
 .entry-meta strong { font-weight: 500; color: var(--ink); }
 .entry-body h3 { margin: 0; font-size: var(--fs-h3); font-weight: 700; line-height: 1.25; }
-.entry-body h3 span { font-weight: 400; color: var(--ink-soft); }
+.entry-body h3 span { font-weight: 400; color: var(--ink-soft); white-space: nowrap; }
 .entry-links { margin: 1.6mm 0 0; font-family: 'DM Mono', monospace; font-size: var(--fs-small); }
 .entry-links a { text-decoration: none; border-bottom: 1px solid var(--cv-accent); }
 .entry-links a:hover { color: var(--cv-accent-ink); }
@@ -331,7 +331,6 @@ a.contact-line:hover span { color: var(--cv-accent); }
 .bullets { list-style: none; margin: 1mm 0 0; padding: 0; display: grid; gap: .5mm; font-size: var(--fs-body); line-height: 1.35; color: var(--ink-soft); }
 .bullets li { display: grid; grid-template-columns: 3.2mm 1fr; }
 .bullets li::before { content: '–'; color: var(--cv-accent-ink); font-weight: 700; }
-.project-text { margin: 1mm 0 0; font-size: var(--fs-body); line-height: 1.35; color: var(--ink-soft); }
 
 .project-grid { display: grid; gap: 1.3mm; }
 .project { border: 1px solid var(--rule); padding: 1.5mm 2.6mm 1.7mm; }
@@ -348,7 +347,7 @@ a.contact-line:hover span { color: var(--cv-accent); }
 .project h3 { margin: .8mm 0 0; font-family: 'Playfair Display', serif; font-size: var(--fs-project); font-weight: 700; letter-spacing: -.02em; line-height: 1.15; }
 /* Credits the agency the client project was delivered under, without competing
    with the project name. */
-.project h3 span { font-family: 'DM Mono', monospace; font-size: var(--fs-small); font-weight: 400; letter-spacing: 0; color: var(--ink-soft); }
+.project h3 span { font-family: 'DM Mono', monospace; font-size: var(--fs-small); font-weight: 400; letter-spacing: 0; color: var(--ink-soft); white-space: nowrap; }
 .project-year { font-family: 'DM Mono', monospace; font-size: var(--fs-small); color: var(--ink-soft); white-space: nowrap; }
 .project-links { list-style: none; margin: 1.4mm 0 0; padding: 0; display: grid; gap: .8mm; font-size: var(--fs-body); }
 .project-links li { display: flex; align-items: baseline; flex-wrap: wrap; gap: 0 1mm; }
@@ -383,7 +382,7 @@ a.contact-line:hover span { color: var(--cv-accent); }
     --main-pad-l: 20px; --main-pad-r: 20px;
   }
   .cv-shell { padding: 14px 0 40px; }
-  .screen-toolbar { width: auto; margin: 0 16px 12px; justify-content: flex-end; }
+  .screen-toolbar { width: auto; margin: 0 16px 12px; justify-content: flex-start; }
   .toolbar-note { display: none; }
   .toolbar-button { min-width: 0; }
   .paper-frame { width: 100%; height: auto; }
