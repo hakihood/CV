@@ -23,6 +23,61 @@ function ContactIcon({ type }: { type: IconType }) {
   )
 }
 
+function FlagCZ() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 30 20" className="flag" preserveAspectRatio="xMidYMid slice">
+      <rect width="30" height="10" fill="#fff" />
+      <rect y="10" width="30" height="10" fill="#d7141a" />
+      <path d="M0 0 15 10 0 20Z" fill="#11457e" />
+    </svg>
+  )
+}
+
+function FlagUS() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 38 20" className="flag" preserveAspectRatio="xMidYMid slice">
+      <rect width="38" height="20" fill="#fff" />
+      {[0, 2, 4, 6, 8, 10, 12].map((i) => (
+        <rect key={i} y={(i * 20) / 13} width="38" height={20 / 13} fill="#b22234" />
+      ))}
+      <rect width="15.2" height={(20 * 7) / 13} fill="#3c3b6e" />
+    </svg>
+  )
+}
+
+/* Glass pill with both flags; the glass knob slides under the active one. */
+function LanguageToggle({ language, onToggle, label }: { language: Language; onToggle: () => void; label: string }) {
+  return (
+    <button
+      type="button"
+      role="switch"
+      aria-checked={language === 'en'}
+      aria-label={label}
+      title={label}
+      className="lang-toggle"
+      data-lang={language}
+      onClick={onToggle}
+      data-testid="language-toggle"
+    >
+      <span className="lang-knob" aria-hidden="true" />
+      <span className="lang-option" data-active={language === 'cs'}>
+        <FlagCZ />
+      </span>
+      <span className="lang-option" data-active={language === 'en'}>
+        <FlagUS />
+      </span>
+    </button>
+  )
+}
+
+function DownloadIcon() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" className="download-icon">
+      <path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19.5h14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}
+
 function ArrowIcon() {
   return <span aria-hidden="true" className="link-arrow">↗</span>
 }
@@ -71,7 +126,7 @@ type Copy = {
 const cs: Copy = {
   toolbar: 'Životopis · 2026',
   print: 'Stáhnout PDF',
-  languageButton: 'English',
+  languageButton: 'Switch to English',
   about: 'O mně',
   nickname: 'Lukáš',
   location: 'Plzeň',
@@ -192,7 +247,7 @@ const cs: Copy = {
 const en: Copy = {
   toolbar: 'Résumé · 2026',
   print: 'Download PDF',
-  languageButton: 'Česky',
+  languageButton: 'Přepnout do češtiny',
   about: 'About me',
   nickname: 'Lukáš',
   location: 'Pilsen, CZ',
@@ -386,14 +441,7 @@ function App() {
       <div className="screen-toolbar">
         <span className="toolbar-note">{t.toolbar}</span>
         <div className="toolbar-actions">
-          <button
-            type="button"
-            className="toolbar-button"
-            onClick={() => setLanguage(language === 'cs' ? 'en' : 'cs')}
-            data-testid="language-toggle"
-          >
-            {t.languageButton}
-          </button>
+          <LanguageToggle language={language} onToggle={() => setLanguage(language === 'cs' ? 'en' : 'cs')} label={t.languageButton} />
           {/* Downloads a pre-generated text PDF (real text layer + clickable
               links, single A4 page) instead of window.print(). The browser
               print dialog rasterizes to multiple pages when the user leaves
@@ -408,6 +456,7 @@ function App() {
             download="Dai Duong Bui - CV.pdf"
             data-testid="print-cv"
           >
+            <DownloadIcon />
             {t.print}
           </a>
         </div>
